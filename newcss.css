@@ -3,3 +3,20 @@
     overflow: hidden;
     background: #000;
 }
+.playerx .bigplayer {
+    width: auto;
+    float: none;
+    overflow: hidden;
+}
+.playerx .bigplayer .centerplayer {
+    z-index: 102;
+}
+.playerx .bigplayer .centerplayer #embed_holder {
+    background: #1c1c1c;
+}
+.playerx .bigplayer .centerplayer #embed_holder #pembed {
+    margin: 0 auto;
+    position: relative;
+    height: 0;
+    padding-bottom: 50%;
+}
