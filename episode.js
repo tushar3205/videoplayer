@@ -1,27 +1,47 @@
-// Function to generate the episode buttons
-function generateEpisodeButtons() {
-    const container = document.getElementById('episode-buttons-container');
-    
-    // Clear previous buttons (if any)
-    container.innerHTML = '';
+// Function to generate the episode buttons and iframes
+function generateEpisodeButtonsAndIframes() {
+    const buttonsContainer = document.getElementById('episode-buttons-container');
+    const iframeContainer = document.getElementById('embed_holder');
 
-    // Create buttons dynamically based on the episode URLs
+    // Clear the previous buttons and iframes
+    buttonsContainer.innerHTML = '';
+    iframeContainer.innerHTML = '';
+
+    // Loop through episode URLs to generate buttons and iframes
     episodeUrls.forEach((url, index) => {
+        // Create a button for each episode
         const button = document.createElement('button');
-        button.innerHTML = `EP ${index + 1}`;  // Label the button as "EP 1", "EP 2", etc.
+        button.innerHTML = `EP ${index + 1}`;
         button.onclick = function() {
-            changeEpisode(url);  // Call the changeEpisode function with the selected URL
+            showIframe(index);  // Show the iframe corresponding to the clicked episode
         };
-        container.appendChild(button);  // Append the button to the container
+        buttonsContainer.appendChild(button); // Append button to the container
+
+        // Create an iframe for each episode
+        const iframe = document.createElement('iframe');
+        iframe.src = url;  // Set the URL of the iframe
+        iframe.width = "100%";
+        iframe.height = "800";
+        iframe.frameborder = "0";
+        iframe.allowfullscreen = true;
+
+        // Append the iframe to the iframe container
+        iframeContainer.appendChild(iframe);
     });
 }
 
-// Function to change the iframe source based on the selected episode
-function changeEpisode(url) {
-    const iframe = document.getElementById('player');
-    iframe.innerHTML = `<iframe id="player" width="100%" height="800" frameborder="0" src="${url}" allowfullscreen=""></iframe>`; 
-    // Update the iframe using innerHTML to dynamically set the src attribute
+// Function to show the iframe for the selected episode and hide others
+function showIframe(episodeIndex) {
+    const iframes = document.querySelectorAll('.iframe-container iframe');
+
+    // Hide all iframes
+    iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+    });
+
+    // Show the iframe for the selected episode
+    iframes[episodeIndex].style.display = 'block';
 }
 
-// Call generateEpisodeButtons() once the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', generateEpisodeButtons);
+// Call the function once the page content is loaded
+document.addEventListener('DOMContentLoaded', generateEpisodeButtonsAndIframes);
