@@ -1,16 +1,15 @@
 .playerx {
     width: 100%;
-    max-width: 1200px; /* Or any desired max width */
-    height: 800px; /* Fixed height */
-    margin: 0 auto; /* Center the container */
+    height: auto; /* Allows for flexible height */
 }
 
 .bigplayer, .centerplayer {
     width: 100%;
-    height: 100%;
+    height: auto; /* Allow the containers to grow to fit the iframe */
 }
 
 .player-embed iframe {
     width: 100%;
-    height: 100%;
+    height: 800px; /* Adjust the iframe height as needed */
+    max-width: 100%;
 }
