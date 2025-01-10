@@ -1,22 +1,17 @@
 .playerx {
-    position: relative;
-    overflow: hidden;
-    background: #000;
+    width: 100%;
+    max-width: 100%; /* Prevent it from exceeding 100% of parent */
+    height: auto;
 }
-.playerx .bigplayer {
-    width: auto;
-    float: none;
-    overflow: hidden;
+
+.bigplayer, .centerplayer {
+    width: 100%;
+    height: auto;
 }
-.playerx .bigplayer .centerplayer {
-    z-index: 102;
-}
-.playerx .bigplayer .centerplayer #embed_holder {
-    background: #1c1c1c;
-}
-.playerx .bigplayer .centerplayer #embed_holder #pembed {
-    margin: 0 auto;
-    position: relative;
-    height: 0;
-    padding-bottom: 50%;
+
+.player-embed iframe {
+    width: 100%;
+    height: 100%;
+    max-width: 100%; /* Optional: prevent overflow */
+    max-height: 80vh; /* Optional: adjust the max height */
 }
